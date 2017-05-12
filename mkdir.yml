@@ -3,4 +3,4 @@
   become: true
   tasks:
      - name: Create directory
-       command: mkdir /home/new
+       command: mkdir /home/new1
