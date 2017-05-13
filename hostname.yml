@@ -1,0 +1,4 @@
+---
+  - hosts: 192.168.218.131
+    tasks:
+      - command: hostname
