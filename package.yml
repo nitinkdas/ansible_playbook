@@ -1,0 +1,5 @@
+---
+  - hosts: centos
+    tasks:
+      - name: install loadbalancer package
+        yum: name=nginx state=present

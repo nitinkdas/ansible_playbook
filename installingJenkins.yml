@@ -1,0 +1,27 @@
+---
+  - hosts: centos
+    tasks:
+      - name: install java
+        yum: name=java state=present
+      - name: check java version
+        command: java -version
+      - name: Create yum file
+        command: touch /etc/yum.repos.d/jenkins.repo
+      - name: write into file
+        blockinfile:
+          path: /etc/yum.repos.d/jenkins.repo
+          block: |
+           [jenkins]
+           name=Jenkins
+           baseurl=http://pkg.jenkins.io/redhat
+           gpgcheck=0
+      - name: install rpm
+        command: rpm --import http://pkg.jenkins-ci.org/redhat-stable/jenkins-ci.org.key
+      - name: install jenkins
+        yum: name=jenkins state=present
+      - name: start jenkins services
+        command: systemctl start jenkins.service
+      - name: open firewall
+        command: firewall-cmd --zone=public --permanent --add-port=8080/tcp
+      - name: firewall reload
+        command: firewall-cmd --reload
