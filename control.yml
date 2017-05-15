@@ -1,0 +1,10 @@
+---
+- hosts: centos
+  tasks:
+    - name: installing tools
+      yum: name={{item}} state=present
+      with_items:
+          - curl
+          - libcurl
+          - vim
+          - wget
