@@ -20,7 +20,8 @@
       - name: install jenkins
         yum: name=jenkins state=present
       - name: start jenkins services
-        command: systemctl start jenkins.service
+#        command: systemctl start jenkins.service
+        service: name=jenkins state=restarted enabled=yes
       - name: open firewall
         command: firewall-cmd --zone=public --permanent --add-port=8080/tcp
       - name: firewall reload
