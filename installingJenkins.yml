@@ -5,6 +5,9 @@
         yum: name=java state=present
       - name: check java version
         command: java -version
+        register: ver
+      - name: Print java version
+        debug: var=ver.stdout_lines
       - name: Create yum file
         command: touch /etc/yum.repos.d/jenkins.repo
       - name: write into file
