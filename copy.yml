@@ -1,0 +1,7 @@
+---
+ - hosts: centos
+   tasks:
+     - name: copy files from local to remote
+       copy: src=/home/nitin/ansible_playbook/control.yml dest=/root/
+     - name: copy file in remote from remote
+       copy: src=/root/control.yml dest=/opt remote_src=yes
