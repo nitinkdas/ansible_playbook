@@ -1,0 +1,14 @@
+---
+  - hosts: centos
+    tasks:
+#      - name: downloading Jira
+#        command: wget -P /opt https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-6.4.7-x64.bin
+      - name: change mode of the file
+        command: chmod 0777 /opt/atlassian-jira-6.4.7-x64.bin
+      - expect:
+          command: ./atlassian-jira-6.4.7-x64.bin
+          responses:
+            Question:
+              - press_enter: o
+              - press_enter: 1
+              - press_enter: i
